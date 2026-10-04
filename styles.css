@@ -415,10 +415,18 @@ section { padding: 64px 0; }
   }
   .nav.open ul { display: flex; }
   .nav ul a { display: block; padding: 14px 16px; font-size: 1.1rem; }
-  /* Phones: center the photo on the device (~56% across) and leave a gap under the headline
-     so the glowing LED shows between the headline and "Introducing BigToe". */
-  .hero { min-height: 0; background-position: 56% top; }
-  .hero-intro { margin-top: 180px; }
+  /* Phones: size the photo independently of the hero's height (780px tall, centered on the
+     device ~56% across) so the glowing LED sits just under the headline, with room for the
+     whole "Introducing BigToe" block on the first screen. The photo fades to black behind
+     the signup form. */
+  .hero {
+    min-height: 0;
+    background:
+      linear-gradient(180deg, rgba(0,0,0,0) 600px, #000 780px) top / 100% 780px no-repeat,
+      url("assets/img/hero.jpg") 56% top / auto 780px no-repeat,
+      #000;
+  }
+  .hero-intro { margin-top: 110px; }
   .hero .wrap { grid-template-columns: 1fr; row-gap: 24px; }
   .hero h1 { padding-top: 16px; }
   .hero-signup { grid-row: auto; justify-content: center; margin-top: 40px; }
