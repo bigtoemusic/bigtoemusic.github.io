@@ -1,0 +1,461 @@
+/* BigToe Music — static rebuild of bigtoemusic.com */
+
+:root {
+  --bg: #000;
+  --card: #1b1b1b;
+  --card-edge: #2a2a2a;
+  --text: #fff;
+  --muted: #cfcfcf;
+  --yellow: #fbc12f;
+  --button: #f2c14e;
+  --orange: #f97400;
+  --font-display: "Paytone One", sans-serif;
+  --font-head: "Lato", sans-serif;
+  --font-body: "Jost", sans-serif;
+  --font-ui: "Nunito Sans", sans-serif;
+  --nav-h: 56px;
+  --max: 1100px;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+img, video { max-width: 100%; display: block; }
+
+a { color: inherit; }
+
+h1, h2, h3 { font-family: var(--font-head); font-weight: 700; margin: 0; line-height: 1.2; }
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
+
+section { padding: 64px 0; }
+
+.section-title { text-align: center; font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin-bottom: 32px; }
+
+/* ---------- Nav ---------- */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--nav-h);
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0 16px;
+  display: flex;
+  gap: clamp(12px, 3vw, 32px);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav a {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.nav a:hover, .nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: 4px; }
+
+/* Logo and ☰ button only appear at phone width (see the media query at the bottom). */
+.nav-brand, .nav-toggle { display: none; }
+.nav-brand img { height: 30px; width: auto; }
+
+.nav-toggle {
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: 0;
+  padding: 10px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav-toggle span { display: block; height: 3px; border-radius: 2px; background: var(--text); transition: transform .2s, opacity .2s; }
+
+/* Bars turn into an X while the menu is open. */
+.nav.open .nav-toggle span:nth-child(1) { transform: translateY(10.5px) rotate(45deg); }
+.nav.open .nav-toggle span:nth-child(2) { opacity: 0; }
+.nav.open .nav-toggle span:nth-child(3) { transform: translateY(-10.5px) rotate(-45deg); }
+
+/* ---------- Kickstarter banner ---------- */
+
+.banner {
+  background: radial-gradient(circle, var(--yellow) 0%, var(--orange) 140%);
+  color: #111;
+  text-align: center;
+  padding: 10px 16px;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  font-weight: 400;
+}
+
+.banner a { text-decoration: none; }
+.banner strong { font-weight: 700; }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  min-height: min(1000px, 125vw);
+  background: url("assets/img/hero.jpg") center top / cover no-repeat;
+  padding: 40px 0 48px;
+  display: flex;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,0) 40%, rgba(0,0,0,.35));
+  pointer-events: none;
+}
+
+.hero .wrap {
+  position: relative;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
+  column-gap: 32px;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  text-align: center;
+  line-height: 1.35;
+  text-shadow: 0 2px 12px rgba(0,0,0,.7);
+  padding-top: 48px;
+  max-width: 11em;
+  justify-self: center;
+}
+
+.hero-intro { padding-top: 16px; text-shadow: 0 2px 10px rgba(0,0,0,.8); }
+.hero-intro .intro-label { font-family: var(--font-head); font-size: clamp(1.2rem, 2.4vw, 1.6rem); margin: 0; }
+.hero-intro img { width: min(260px, 70%); margin: 4px 0 16px; }
+.hero-intro p { font-family: var(--font-head); font-weight: 700; font-size: clamp(1.05rem, 2.1vw, 1.4rem); max-width: 14em; margin: 0; }
+
+.hero-signup {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.ks-badge {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: #000;
+  border: 1px solid #555;
+  padding: 8px 10px;
+  font-style: italic;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.ks-badge img { width: 140px; }
+
+/* ---------- Signup form ---------- */
+
+.signup { width: min(340px, 100%); }
+.signup .form-title { font-family: var(--font-head); font-style: italic; font-size: 1.1rem; margin: 0 0 6px; text-align: center; text-shadow: 0 2px 8px #000; }
+.signup label { display: block; font-family: var(--font-ui); font-weight: 700; font-size: 0.85rem; margin-bottom: 6px; text-shadow: 0 1px 6px #000; }
+
+.signup input, .contact-form input, .contact-form textarea {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font: 400 1rem var(--font-ui);
+  color: #111;
+  background: #fff;
+}
+
+.btn {
+  display: block;
+  width: 100%;
+  margin-top: 14px;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: var(--button);
+  color: #111;
+  font: 700 1rem var(--font-ui);
+  cursor: pointer;
+}
+
+.btn:hover { filter: brightness(1.08); }
+
+.form-note { font-family: var(--font-ui); font-size: 0.9rem; color: var(--yellow); margin: 10px 0 0; min-height: 1.3em; }
+
+/* ---------- First look ---------- */
+
+.first-look .grid { display: grid; grid-template-columns: 1.6fr 1fr; gap: 24px; align-items: stretch; }
+
+.video-frame {
+  border: 3px solid #333;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 0 14px rgba(255,255,255,.12);
+}
+
+.video-frame video { width: 100%; height: 100%; object-fit: contain; aspect-ratio: 16 / 9; }
+
+.reactions {
+  background: var(--card);
+  border: 1px solid var(--card-edge);
+  border-radius: 10px;
+  padding: 20px 18px;
+  text-align: center;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.reactions h3 { font-style: italic; font-weight: 400; font-size: 1.25rem; margin-bottom: 18px; }
+.reactions blockquote { margin: 0; }
+.reactions hr { width: 50%; border: 0; border-top: 2px solid var(--yellow); margin: 20px auto; }
+
+/* ---------- Why (traditional controllers) ---------- */
+
+.why .subtitle { text-align: center; font-family: var(--font-ui); font-weight: 800; font-size: 1.25rem; margin: -12px 0 32px; }
+
+.controllers { display: grid; grid-template-columns: 1fr 2fr; gap: 32px; align-items: center; }
+.controllers img:first-child { justify-self: center; max-width: 220px; }
+
+.traditional { border-top: 1px solid #222; margin-top: 40px; padding-top: 24px; }
+.traditional h3 { text-align: center; font-size: 1.35rem; margin-bottom: 16px; }
+.traditional ul { columns: 2; column-gap: 48px; max-width: 900px; margin: 0 auto; padding-left: 20px; }
+.traditional li { break-inside: avoid; margin-bottom: 8px; }
+
+/* ---------- Features ---------- */
+
+.features .section-title { text-align: left; }
+
+.features .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+
+.icon-list { list-style: none; margin: 0; padding: 0; }
+.icon-list li { display: grid; grid-template-columns: 28px 1fr; gap: 14px; align-items: start; margin-bottom: 28px; }
+.icon-list img { width: 26px; margin-top: 2px; }
+
+.feature-shots { display: grid; gap: 16px; }
+.feature-shots img { border-radius: 8px; }
+
+/* ---------- Tiles ---------- */
+
+.tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: var(--max); margin: 0 auto; padding: 32px 16px; }
+
+/* Media sits in a same-shaped box; caption sits above it so it never covers screenshots or video controls. */
+.tile { margin: 0; }
+.tile-media { aspect-ratio: 3 / 2; overflow: hidden; background: #000; border-radius: 8px; }
+.tile-media img, .tile-media video { width: 100%; height: 100%; object-fit: cover; }
+.tile-media.contain img, .tile-media.contain video { object-fit: contain; }
+
+.tile figcaption {
+  padding: 0 8px 12px;
+  text-align: center;
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+}
+
+/* ---------- Choose ---------- */
+
+.choose .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.choose .box-shot { background: #fff; border-radius: 4px; }
+.choose h3 { text-align: center; font-size: 1.15rem; margin-bottom: 16px; }
+
+.spec-card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 18px 24px;
+  box-shadow: 0 0 22px rgba(255,255,255,.08);
+}
+
+.spec-card .icon-list li { margin-bottom: 10px; align-items: center; }
+
+/* ---------- Setup steps ---------- */
+
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+
+.step {
+  background: var(--card);
+  border-radius: 18px;
+  padding: 22px 18px 26px;
+  box-shadow: 0 0 22px rgba(255,255,255,.08);
+}
+
+.step h3 { display: flex; align-items: center; gap: 10px; font-size: 1.2rem; margin-bottom: 12px; }
+.step svg { width: 22px; height: 22px; flex: none; }
+.step p { margin: 0 0 16px; }
+
+/* ---------- CTA ---------- */
+
+.cta .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+.cta h2 { text-align: center; font-size: clamp(1.4rem, 2.6vw, 1.75rem); margin-bottom: 20px; }
+.cta .signup { justify-self: center; }
+
+/* ---------- Footer ---------- */
+
+.footer { padding: 40px 0 64px; }
+.footer .wrap { display: flex; align-items: center; justify-content: center; gap: clamp(32px, 10vw, 120px); flex-wrap: wrap; }
+.footer-brand { text-align: center; font-family: "Figtree", sans-serif; font-size: 0.85rem; }
+.footer-brand img { width: 110px; margin: 0 auto 2px; }
+.footer-brand p { margin: 0; }
+
+.pick-nav { display: flex; gap: 8px; }
+.pick-nav a { display: block; width: 50px; transition: transform .15s; }
+.pick-nav a:hover { transform: translateY(-3px); }
+
+/* ---------- Sub pages (FAQ / Contact) ---------- */
+
+.page-head { border-bottom: 1px solid #333; }
+.page-head .wrap { display: flex; align-items: center; justify-content: center; position: relative; min-height: 64px; max-width: 560px; }
+.page-head h1 { font-size: clamp(1.6rem, 4vw, 2rem); text-align: center; }
+.page-head .home-link { position: absolute; right: 16px; font-family: var(--font-ui); font-weight: 700; font-size: 0.85rem; text-decoration: none; }
+.page-head .home-link:hover { text-decoration: underline; }
+
+.narrow { max-width: 560px; margin: 0 auto; padding: 24px 16px 48px; }
+
+.faq-search { display: flex; justify-content: flex-end; margin-bottom: 24px; }
+.faq-search input {
+  width: min(240px, 100%);
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #aaa;
+  color: var(--text);
+  padding: 6px 2px;
+  font: 400 0.95rem var(--font-ui);
+}
+
+.faq-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.faq-tabs button {
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  color: var(--text);
+  padding: 8px 14px;
+  font: 700 1.05rem var(--font-head);
+  cursor: pointer;
+}
+.faq-tabs button[aria-selected="true"] { color: var(--yellow); border-bottom-color: var(--yellow); }
+
+.faq-list details { border-bottom: 1px solid #333; }
+.faq-list summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 22px 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-family: var(--font-ui);
+}
+.faq-list summary::-webkit-details-marker { display: none; }
+.faq-list summary::after { content: "⌄"; font-size: 1.2rem; line-height: 1; transition: transform .2s; }
+.faq-list details[open] summary::after { transform: rotate(180deg); }
+.faq-list .answer { padding: 0 0 20px; color: var(--muted); font-family: var(--font-ui); }
+.faq-list .answer p { margin: 0 0 12px; }
+.faq-empty { color: var(--muted); font-family: var(--font-ui); }
+
+.contact-form label { display: block; font-family: var(--font-ui); font-size: 0.9rem; margin: 18px 0 6px; }
+.contact-form textarea { min-height: 90px; resize: vertical; }
+.btn-outline { background: transparent; color: var(--text); border: 1px solid #3355dd; font-weight: 400; margin-top: 22px; }
+
+.simple-footer { border-top: 1px solid #333; text-align: center; padding: 28px 16px; font-family: var(--font-ui); font-size: 0.9rem; }
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 760px) {
+  section { padding: 44px 0; }
+  .nav { justify-content: space-between; padding: 0 8px 0 16px; }
+  .nav-brand { display: block; }
+  .nav-toggle { display: flex; }
+  .nav ul {
+    display: none;
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    padding: 4px 0 12px;
+    background: #000;
+    border-bottom: 1px solid #333;
+    box-shadow: 0 12px 24px rgba(0,0,0,.6);
+  }
+  .nav.open ul { display: flex; }
+  .nav ul a { display: block; padding: 14px 16px; font-size: 1.1rem; }
+  .hero { min-height: 0; background-position: 30% top; }
+  .hero .wrap { grid-template-columns: 1fr; row-gap: 24px; }
+  .hero h1 { padding-top: 16px; }
+  .hero-intro { text-align: center; }
+  .hero-intro img, .hero-intro p { margin-left: auto; margin-right: auto; }
+  .hero-signup { grid-row: auto; justify-content: center; margin-top: 160px; }
+  .first-look .grid, .controllers, .features .grid, .choose .grid, .cta .grid { grid-template-columns: 1fr; }
+  .traditional ul { columns: 1; }
+  .tiles { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+}
+
+/* ---------- Confirmation page (Kit's confirm button lands here) ---------- */
+
+.confirm-page { min-height: 100vh; display: flex; flex-direction: column; }
+
+.confirm {
+  flex: 1;
+  display: grid;
+  place-items: center;
+  padding: 48px 16px;
+  background: linear-gradient(rgba(0,0,0,.72), rgba(0,0,0,.88)), url("assets/img/hero.jpg") center / cover no-repeat;
+}
+
+.confirm-card {
+  width: min(560px, 100%);
+  background: rgba(20,20,20,.85);
+  border: 1px solid var(--card-edge);
+  border-radius: 18px;
+  padding: 36px 28px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(251,193,47,.15);
+}
+
+.confirm-logo { width: 180px; margin: 0 auto 12px; }
+.confirm h1 { font-family: var(--font-display); font-weight: 400; font-size: clamp(1.8rem, 5vw, 2.4rem); color: var(--yellow); margin-bottom: 16px; }
+.confirm p { font-size: 1.1rem; margin: 0 0 14px; }
+.confirm .confirm-small { font-size: 0.95rem; color: var(--muted); }
+
+.confirm-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+.confirm-actions .btn { display: inline-block; width: auto; margin: 0; padding: 10px 24px; text-decoration: none; }
+.confirm-actions .btn-outline { border-color: #555; }
+
+/* Contact form spam trap — kept out of sight and out of the tab order. */
+.botcheck { position: absolute; left: -9999px; }

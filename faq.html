@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Big Toe Music | FAQ</title>
+  <link rel="icon" href="assets/img/logo-mark-yellow.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=8">
+</head>
+<body>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>Frequently Asked Questions</h1>
+    <a class="home-link" href="index.html">Home</a>
+  </div>
+</header>
+
+<main class="narrow">
+  <div class="faq-search">
+    <input type="search" placeholder="Looking for something?" aria-label="Search the FAQ">
+  </div>
+
+  <div class="faq-tabs" role="tablist">
+    <button role="tab" data-tab="general" aria-selected="true">General</button>
+    <button role="tab" data-tab="midi" aria-selected="false">MIDI Connection</button>
+    <button role="tab" data-tab="pedals" aria-selected="false">Setting Up Pedals</button>
+  </div>
+
+  <div class="faq-list">
+    <!-- General -->
+    <details data-tab="general">
+      <summary>What is Big Toe?</summary>
+      <div class="answer">
+        <p>Big Toe is a MIDI foot controller built to integrate with your MIDI enabled software and hardware.  You will need an audio interface to connect with your software effects.</p>
+      </div>
+    </details>
+    <details data-tab="general">
+      <summary>Can I buy the Big Toe?</summary>
+      <div class="answer">
+        <p>The Big Toe is not for sale at this time, and we are getting ready to launch our kickstarter where it will be available with discounts for early-birds.  Until then, we are still very interested in gathering your feedback as we try to make sure the product meets your needs and meets all required certifications.</p>
+      </div>
+    </details>
+    <details data-tab="general">
+      <summary>How do the Big Toe’s pedals work?</summary>
+      <div class="answer">
+        <p>RFID (Radio Frequency Identification) tags power the pedals.  Each tag represents a pedal.</p>
+        <p>When setting up pedals, you associate tags with MIDI events that will be sent to your effects software or hardware whenever that tag is read.</p>
+      </div>
+    </details>
+    <details data-tab="general">
+      <summary>How do I set up my pedals?</summary>
+      <div class="answer">
+        <p>Connect your Big Toe to your computer/tablet/phone using WiFi.   It will show up as a network device just like your home router.  Connect to it.  Start a web browser and type in bigtoe.local to start the Big Toe monitor.</p>
+        <p>The Big Toe monitor is where you add, modify and delete your pedal definitions as well as monitor your pedals live.  It can also be used to trigger most midi events.</p>
+      </div>
+    </details>
+    <details data-tab="general">
+      <summary>What is the WiFi password?</summary>
+      <div class="answer">
+        <p>The default WiFi password is 1234567890.  You can change this from the menu.</p>
+      </div>
+    </details>
+    <details data-tab="general">
+      <summary>What are all the characters after “BigToe-“ in the device name?</summary>
+      <div class="answer">
+        <p>The default name of your device is “BigToe-“ followed by several characters which make up the MAC address of your device.  The MAC address uniquely identifies your device on the network.  Use the menu option to change this to something meaningful.</p>
+      </div>
+    </details>
+
+    <!-- MIDI Connection -->
+    <details data-tab="midi">
+      <summary>How do I connect Big Toe to my MIDI software?</summary>
+      <div class="answer">
+        <p>On a Mac, use Apple’s built in Audio Midi Setup Utility.  Open the Bluetooth window and connect to your device.  Big Toe’s LED will turn blue when connected.</p>
+        <p>On iOS and iPadOS devices you can use any number of 3rd party utilities to connect such as Conji.  Some apps such as LoopyPro have this connection built in to their app.</p>
+      </div>
+    </details>
+    <details data-tab="midi">
+      <summary>How do I connect Big Toe to MIDI hardware?</summary>
+      <div class="answer">
+        <p>Use a Bluetooth MIDI Adapter such as WIDI Master.  Big Toe will automatically connect as a Peripheral device.</p>
+      </div>
+    </details>
+
+    <!-- Setting Up Pedals -->
+    <details data-tab="pedals">
+      <summary>Where do I set up my pedals?</summary>
+      <div class="answer">
+        <p>Once you have connected your web browser to your BigToe, open a browser window and type in the url bigtoe.local.</p>
+        <p>The Big Toe screen willl appear and you can start adding and editing your pedals.</p>
+        <p>Pedals are added to 'pads' reflecting your physical pads.  Each pad on the screen can hold 4 pedals just as each physical pedal can comfortably hold 4 RFID tags.</p>
+      </div>
+    </details>
+    <details data-tab="pedals">
+      <summary>What are the different pedal modes?</summary>
+      <div class="answer">
+        <p>Pedals are defined from the Edit window when you Add a new pedal or Update an existing one and operate in one of the following modes:</p>
+        <p>Footswitch:  This is the classic stomp box type pedal.   Big Toe will automatically toggle values between 127 and 0 to trigger ON and OFF actions for your effects.</p>
+        <p>Momentary: Upon tapping a tag defined as momentary pedal, Big Toe will send out a value of 127 and it will send out a value of 0 when you have moved the RFID reader away from the tag ‘releasing’ the trigger.    If the momentary event is not the first event for that pedal, the OFF event will be fired right away.</p>
+        <p>Expression:  Big Toe has a unique way of implementing expression or continuous control.  A typical setup involves setting up a few pedals to implement expression pedal functions.</p>
+        <p>Set one pedal with a specific CC number and a value indicating where on the scale from 0 to 127 your 'dial' is to be set.   This may be your baseline value.</p>
+        <p>Set a second pedal with the same CC number and value.  Set a value for  +/-,   let's say Increase, to increment that value when triggered and the corresponding value to Bump by.</p>
+        <p>Set a third pedal with the same CC number and value.  Add a +/-  value, this time to Decrease that value when triggered and an amount to decrease by.</p>
+        <p>Expression pedals defined in this way with the same CC number will show up on your monitor as 1 pedal.</p>
+      </div>
+    </details>
+    <details data-tab="pedals">
+      <summary>Can I change the layout of the pedals on the pads?</summary>
+      <div class="answer">
+        <p>Yes.  Using the Pad Layout menu option, you can set the number of pads on a given row on the screen and the order of those pads.</p>
+      </div>
+    </details>
+    <details data-tab="pedals">
+      <summary>Can I change the order of the pedals on the page?</summary>
+      <div class="answer">
+        <p>Yes, You can rearrange the order of pedals shown on your browser.</p>
+        <p>Press/touch and hold the pedal, drag it on top of the pedal location you where would like it to be and release.  All other pedals will move right.  If you drop between any pedal location, you pedal will move to the end.   You can drag within a pad and from pad to pad.</p>
+      </div>
+    </details>
+    <details data-tab="pedals">
+      <summary>What are Groups?</summary>
+      <div class="answer">
+        <p>When you set a Group name for Footswitch pedals, Big Toe will ensure only one pedal in the Group with that name is ON at any one time.   This is useful for switching between effects of a similar type, such as distortions, reverbs, amp sims, or switching between channels.</p>
+        <p>Let's say for example, you have 3 pedals defined, Overdrive, Distortion and Fuzz, that have all been given the same group name 'DRIVES'.</p>
+        <p>Tapping Overdrive will turn that pedal on and fire the event.  Tapping Fuzz, will turn the Fuzz on and fire that event and turn off the Overdrive pedal.</p>
+      </div>
+    </details>
+  </div>
+  <p class="faq-empty" hidden>No questions match your search.</p>
+</main>
+
+<footer class="simple-footer">© 2025 by BigToeMusic LLC</footer>
+
+<script src="main.js?v=8"></script>
+</body>
+</html>

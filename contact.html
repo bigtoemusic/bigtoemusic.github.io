@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Big Toe Music | Contact</title>
+  <link rel="icon" href="assets/img/logo-mark-yellow.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Nunito+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=8">
+</head>
+<body class="contact-page">
+
+<header class="page-head">
+  <div class="wrap">
+    <h1>Contact Us</h1>
+    <a class="home-link" href="index.html">Home</a>
+  </div>
+</header>
+
+<main class="narrow">
+  <!-- Messages are delivered to info@bigtoemusic.com by Web3Forms (free plan).
+       The access key is meant to be public: it can only send mail to that inbox. -->
+  <form class="contact-form js-contact" action="https://api.web3forms.com/submit" method="post">
+    <input type="hidden" name="access_key" value="77da337f-32a5-46e2-bbc4-3382264074a5">
+    <input type="hidden" name="subject" value="New message from bigtoemusic.com">
+    <input type="hidden" name="from_name" value="BigToe website">
+    <!-- Spam trap: hidden from people, bots that fill it in are rejected by Web3Forms. -->
+    <input type="checkbox" name="botcheck" class="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label for="first">First name</label>
+    <input id="first" name="first_name" autocomplete="given-name">
+    <label for="last">Last name</label>
+    <input id="last" name="last_name" autocomplete="family-name">
+    <label for="email">Email *</label>
+    <input id="email" name="email" type="email" required autocomplete="email">
+    <label for="msg">Product questions or requests</label>
+    <textarea id="msg" name="message" placeholder="Let us know how Big Toe can work for you."></textarea>
+    <button class="btn btn-outline" type="submit">Submit</button>
+    <p class="form-note" role="status"></p>
+  </form>
+</main>
+
+<footer class="simple-footer">© 2025 by BigToeMusic LLC</footer>
+
+<script src="main.js?v=8"></script>
+</body>
+</html>
