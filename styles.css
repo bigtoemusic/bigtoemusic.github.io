@@ -260,7 +260,6 @@ section { padding: 64px 0; }
 
 /* ---------- Features ---------- */
 
-.features .section-title { text-align: left; }
 
 .features .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
 
@@ -385,6 +384,11 @@ section { padding: 64px 0; }
 .faq-list details[open] summary::after { transform: rotate(180deg); }
 .faq-list .answer { padding: 0 0 20px; color: var(--muted); font-family: var(--font-ui); }
 .faq-list .answer p { margin: 0 0 12px; }
+.faq-list .answer strong { color: var(--text); }
+.mode-list { margin: 0 0 12px; padding-left: 20px; }
+.mode-list > li { margin-bottom: 12px; }
+.mode-list ol { margin: 8px 0; padding-left: 22px; }
+.mode-list ol li { margin-bottom: 4px; }
 .faq-empty { color: var(--muted); font-family: var(--font-ui); }
 
 .contact-form label { display: block; font-family: var(--font-ui); font-size: 0.9rem; margin: 18px 0 6px; }
