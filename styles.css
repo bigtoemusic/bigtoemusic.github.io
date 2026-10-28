@@ -158,31 +158,42 @@ section { padding: 64px 0; }
 .hero-intro .intro-label { font-family: var(--font-head); font-size: clamp(1.2rem, 2.4vw, 1.6rem); max-width: none; margin: 0; }
 .hero-intro img { width: min(260px, 70%); margin: 4px auto 16px; }
 .hero-intro p { font-family: var(--font-head); font-weight: 700; font-size: clamp(1.05rem, 2.1vw, 1.4rem); max-width: 14em; margin: 0 auto; }
+.hero-intro .audience { font-weight: 400; font-style: italic; font-size: clamp(0.95rem, 1.6vw, 1.1rem); max-width: 22em; margin-top: 14px; }
 
+/* Signup is the main action, so on wider screens it sits right under "Introducing BigToe"
+   (on the first screen of a laptop) on a dark backing that keeps it readable over the photo.
+   The Kickstarter follow link (hidden until the page is live) sits small beneath it. */
 .hero-signup {
-  grid-column: 1 / -1;
-  grid-row: 3;
+  grid-column: 2;
+  grid-row: 2;
+  justify-self: center;
+  align-self: start;
+  margin-top: 24px;
+  width: min(380px, 100%);
+  padding: 16px 20px 6px;
+  background: rgba(0,0,0,.6);
+  border-radius: 14px;
+  backdrop-filter: blur(4px);
   display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.ks-badge {
-  display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
-  background: #000;
-  border: 1px solid #555;
-  padding: 8px 10px;
-  font-style: italic;
-  font-size: 0.85rem;
-  text-decoration: none;
+  gap: 6px;
 }
 
-.ks-badge img { width: 140px; }
+.ks-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-decoration: none;
+  text-shadow: 0 1px 6px #000;
+  opacity: .85;
+}
+
+.ks-link:hover { opacity: 1; text-decoration: underline; }
+.ks-link img { width: 80px; }
 
 /* ---------- Signup form ---------- */
 
@@ -318,6 +329,16 @@ section { padding: 64px 0; }
 .step svg { width: 22px; height: 22px; flex: none; }
 .step p { margin: 0 0 16px; }
 
+/* Homepage pointer to the setup steps on the FAQ page. */
+.setup-line { padding: 24px 0 8px; text-align: center; font-family: var(--font-head); font-weight: 700; font-size: clamp(1.1rem, 2.2vw, 1.4rem); }
+.setup-line p { margin: 0; }
+.setup-line a { text-decoration-color: var(--yellow); text-underline-offset: 6px; }
+.setup-line a:hover { color: var(--yellow); }
+
+/* On the FAQ page the steps stack in the narrow column. */
+.narrow .setup { padding: 8px 0 32px; }
+.narrow .steps { grid-template-columns: 1fr; gap: 16px; }
+
 /* ---------- CTA ---------- */
 
 .cta .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
@@ -331,6 +352,11 @@ section { padding: 64px 0; }
 .footer-brand { text-align: center; font-family: "Figtree", sans-serif; font-size: 0.85rem; }
 .footer-brand img { width: 110px; margin: 0 auto 2px; }
 .footer-brand p { margin: 0; }
+
+.social { display: flex; justify-content: center; gap: 14px; margin-top: 10px; }
+.social a { display: block; width: 22px; height: 22px; color: var(--text); transition: color .15s; }
+.social a:hover { color: var(--yellow); }
+.social svg { width: 100%; height: 100%; }
 
 .pick-nav { display: flex; gap: 8px; }
 .pick-nav a { display: block; width: 50px; transition: transform .15s; }
@@ -426,21 +452,25 @@ p.fcc-notice { max-width: 560px; margin: 20px auto 0; padding: 0 16px; text-alig
   }
   .nav.open ul { display: flex; }
   .nav ul a { display: block; padding: 14px 16px; font-size: 1.1rem; }
-  /* Phones: size the photo independently of the hero's height (780px tall, centered on the
-     device ~56% across) so the glowing LED sits just under the headline, with room for the
-     whole "Introducing BigToe" block on the first screen. The photo fades to black behind
-     the signup form. */
+  /* Phones: size the photo independently of the hero's height (760px tall, nudged up 40px and
+     centered on the device ~56% across) so the glowing LED sits just under the headline. The
+     hero is kept tight so the signup form lands on the first screen; the photo fades to black
+     behind it. */
   .hero {
     min-height: 0;
+    padding-top: 20px;
     background:
-      linear-gradient(180deg, rgba(0,0,0,0) 600px, #000 780px) top / 100% 780px no-repeat,
-      url("assets/img/hero.jpg") 56% top / auto 780px no-repeat,
+      linear-gradient(180deg, rgba(0,0,0,0) 540px, #000 720px) top / 100% 720px no-repeat,
+      url("assets/img/hero.jpg") 56% -40px / auto 760px no-repeat,
       #000;
   }
-  .hero-intro { margin-top: 110px; }
-  .hero .wrap { grid-template-columns: 1fr; row-gap: 24px; }
-  .hero h1 { padding-top: 16px; }
-  .hero-signup { grid-row: auto; justify-content: center; margin-top: 40px; }
+  .hero-intro { margin-top: 56px; }
+  .hero-intro .intro-label { font-size: 1.05rem; }
+  .hero-intro img { width: 180px; margin: 2px auto 10px; }
+  .hero-intro .audience { margin-top: 10px; }
+  .hero .wrap { grid-template-columns: 1fr; row-gap: 12px; }
+  .hero h1 { padding-top: 8px; }
+  .hero-signup { grid-column: auto; grid-row: auto; margin-top: 12px; width: min(340px, 100%); padding: 0; background: none; backdrop-filter: none; }
   .first-look .grid, .controllers, .features .grid, .choose .grid, .cta .grid { grid-template-columns: 1fr; }
   .traditional ul { columns: 1; }
   .tiles { grid-template-columns: 1fr; }

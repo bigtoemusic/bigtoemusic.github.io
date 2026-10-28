@@ -33,7 +33,7 @@ document.querySelectorAll(".js-signup").forEach((form) => {
       const data = await res.json();
       if (data.status === "success") {
         form.reset();
-        note.textContent = "Thanks! Check your email to confirm your spot for founder pricing.";
+        note.textContent = "Thanks! Check your email to confirm your spot for Early Bird pricing.";
       } else {
         const messages = data.errors?.messages || [];
         note.textContent = messages.some((m) => /email/i.test(m))
