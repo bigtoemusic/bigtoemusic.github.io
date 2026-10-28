@@ -160,11 +160,12 @@ section { padding: 64px 0; }
 .hero-intro p { font-family: var(--font-head); font-weight: 700; font-size: clamp(1.05rem, 2.1vw, 1.4rem); max-width: 14em; margin: 0 auto; }
 .hero-intro .audience { font-weight: 400; font-style: italic; font-size: clamp(0.95rem, 1.6vw, 1.1rem); max-width: 22em; margin-top: 14px; }
 
-/* Signup is the main action, so on wider screens it sits right under "Introducing BigToe"
-   (on the first screen of a laptop) on a dark backing that keeps it readable over the photo.
-   The Kickstarter follow link (hidden until the page is live) sits small beneath it. */
+/* Signup is the main action, so on wider screens it sits right under the headline (on the
+   first screen of a laptop, clear of the foot tapping the tag) on a dark backing that keeps it
+   readable over the photo. The Kickstarter follow link (hidden until the page is live) sits
+   small beneath it. */
 .hero-signup {
-  grid-column: 2;
+  grid-column: 1;
   grid-row: 2;
   justify-self: center;
   align-self: start;
